@@ -812,10 +812,14 @@ document.getElementById(‘hdrTime’).textContent = h + ‘:’ + (m < 10 ? ‘
 }
 
 document.addEventListener(‘DOMContentLoaded’, function() {
+try {
 document.getElementById(‘hdrDate’).textContent = new Date().toLocaleDateString(‘en-US’,{weekday:‘short’,month:‘short’,day:‘numeric’});
 updateClock();
 setInterval(updateClock, 10000);
 renderAll();
+} catch(e) {
+console.error(‘LeadingEdge init error:’, e);
+}
 });
 
 })();
